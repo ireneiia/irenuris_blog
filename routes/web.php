@@ -1,8 +1,8 @@
 <?php
 
+use App\Http\Controllers\dashboard\CategoryController;
 use App\Http\Controllers\Dashboard\PostController;
 use Illuminate\Support\Facades\Route;
-use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,6 +19,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 Route::resource('post',PostController::class);
+Route::resource('category',CategoryController::class);
+
 //para crear las rutas de crud(que no es necesario si creamos el controlador de tipo resource)
 /*
 Route::get('post', [PostController::class,'index']);
