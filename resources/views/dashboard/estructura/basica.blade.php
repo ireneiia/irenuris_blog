@@ -12,12 +12,14 @@
     <style>
         h5{color: #01DFD7;}
         .sombra {box-shadow: 5px 5px 15px gray;}
-        .redondeada{border-radius:2em;}
+        .redondeada{border-radius:1em;}
         .altura{height: 250px;}
         .altura2{height: 50px;}
         .espacio{margin-left: 10%;margin-top: 2%;}
         .espacio2{margin-left: 1%;margin-top: 2%;}
         .espacio3{margin-left: 3%;margin-top: 2%;}
+        .espacio4{margin-left: 2%;margin-top: 2%;}
+
         .text-justify{text-align: left;}
         
     </style>

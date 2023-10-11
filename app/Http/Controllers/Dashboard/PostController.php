@@ -39,7 +39,7 @@ class PostController extends Controller
     //public function store(Request $request)
      public function store(StoreRequest $request)
     {   Post::create($request -> validated());
-        return to_route("post.index")->with('status',"Se ha creado correctamente");;
+        return to_route("post.index")->with('status',"Se ha creado correctamente");
     }
 
     /**
@@ -82,7 +82,7 @@ class PostController extends Controller
     public function destroy(Post $post)
     {
         $post->delete();
-        return to_route("post.index")->with('status',"Se ha eliminado el registro");;
+        return to_route("post.index")->with('status',"Se ha eliminado el registro");
 
     }
 }
