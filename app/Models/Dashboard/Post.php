@@ -12,6 +12,8 @@ class Post extends Model
     //campos insertables.
     protected $fillable=['imagen','titulo','contenido','url', 'categoria_id','descripcion','posted'];
     public function categoria(){
+       // dd( $this->belongsTo(Category::class));
+
         return $this->belongsTo(Category::class);
     }
 }

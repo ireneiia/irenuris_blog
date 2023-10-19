@@ -1,7 +1,8 @@
 <?php
-
 use App\Http\Controllers\dashboard\CategoryController;
 use App\Http\Controllers\Dashboard\PostController;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\Web\BlogController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,17 +19,34 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::resource('post',PostController::class);
-Route::resource('category',CategoryController::class);
 
-//para crear las rutas de crud(que no es necesario si creamos el controlador de tipo resource)
-/*
-Route::get('post', [PostController::class,'index']);
-Route::get('post/{post}', [PostController::class,'show']);
-Route::get('post/create', [PostController::class,'create']);
-Route::get('post/{post}/edit', [PostController::class,'edit']);
 
-Route::post('post', [PostController::class,'store']);
-Route::put('post/{post}', [PostController::class,'update']);
-Route::delete('post/{post}', [PostController::class,'delete']);*/
 
+Route::group(['prefix'=> 'dashboard','middleware' =>['auth',"admin"] ], function(){
+    // Route::resource('post',PostController::class);
+    // Route::resource('category',CategoryController::class);
+    Route::get('/', function () {
+        return view('dashboard');
+    })->name("dashboard");
+    Route::resources([
+         'post'=> PostController::class,
+         'category'=> CategoryController::class
+     ]);
+ });
+
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
+
+Route::group(['prefix'=> 'blog'], function(){
+    Route::controller(BlogController::class)->group(function(){
+        Route::get('/', "index")->name("web.blog.index");
+        Route::get('/{post}', "show")->name("web.blog.show");
+    });
+ });
+
+
+
+require __DIR__.'/auth.php';

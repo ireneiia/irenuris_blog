@@ -13,8 +13,8 @@
             Admin
         </a>
         <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="/category">Categorias</a></li>
-            <li><a class="dropdown-item" href="/post">Post</a></li>
+            <li><a class="dropdown-item" href="/dashboard/category">Categorias</a></li>
+            <li><a class="dropdown-item" href="/dashboard/post">Post</a></li>
         </ul>
         </li>
         

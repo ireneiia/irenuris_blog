@@ -1,11 +1,9 @@
 @extends('dashboard.layaout')
 @section('contenido')
-@include('dashboard.fragmentos.menu')
-<div class="row espacio" style="margin-left: 2%;">  
+<div style="margin-left: 2%;">  
         <h1>Categorias</h1>
-        <hr class="hr"/>
-        <a  class="btn btn-info"  href ="{{route("category.create")}}" style="width: 10%;">Nuevo</a>
-        <table class="espacio table">
+        <a class ="btn btn-succes my-3" href ="{{route("category.create")}}" style="width: 10%;">Nuevo</a>
+        <table class="table mb-3">
             <thead>
                 <tr>
                     <th>Titulo</th>
@@ -19,19 +17,19 @@
                     <td>{{$c->titulo}}</td> 
                     <td>{{$c->url}}</td>
                     <td>
-                        <a class="btn btn-info" href ="{{route("category.edit", $c)}}">Editar</a><br><br>
-                        <a class="btn btn-info"href ="{{route("category.show", $c)}}">Ver</a><br><br>
+                        <a class ="btn btn-primary mt-2" href ="{{route("category.edit", $c)}}">Editar</a>
+                        <a class ="btn btn-primary mt-2" href ="{{route("category.show", $c)}}">Ver</a>
                         <form action ="{{route("category.destroy",$c) }}" method ="post">
                             @method("DELETE")
                             @csrf
-                            <button type="submit" class="btn btn-info">Eliminar</button>
+                            <button class ="btn btn-danger" type="submit">Eliminar</button>
                         </form>
                     </td>  
                 </tr>              
                 @endforeach
             </tbody>
         </table>
-        <div class="espacio">
+        <div >
             {{$categories-> links()}}
         </div>
 </div>

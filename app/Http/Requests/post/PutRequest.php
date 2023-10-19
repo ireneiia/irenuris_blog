@@ -4,7 +4,8 @@ namespace App\Http\Requests\post;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Str;
-
+use Illuminate\Http\Response;
+use Illuminate\Validation\ValidationException;
 /**
  * Summary of PutRequest
  */
@@ -27,6 +28,14 @@ class PutRequest extends FormRequest
         return true;
     }
 
+    public function failedValidation(\Illuminate\Contracts\Validation\Validator $validator)
+    {
+        if($this -> expectsJson()){
+            $response = new Response($validator->errors(),422);
+            throw new ValidationException($validator, $response);
+        }
+    }
+   
     /**
      * Get the validation rules that apply to the request.
      *
@@ -54,10 +63,12 @@ class PutRequest extends FormRequest
             "contenido"=>"required|min:7",
             "descripcion"=>"required|min:7",
             "posted"=>"required",
-            "categoria_id"=>"required|integer",
-            "imagen" => "mimes:jpeg,jpg,png|max:10240"
+            "categoria_id"=>"required|integer"
+           
             
 
         ];
     }
+
+    
 }

@@ -18,8 +18,8 @@ return new class extends Migration
             $table->text("contenido")->nullable();
             $table->text("descripcion")->nullable();
             $table->string("imagen")->nullable();
-            $table->enum("posted",['yes','no'])->nullable();
-            $table->foreignId('categorias_id')->constrained()->onDelete('cacade');
+            $table->enum("posted",['si','no'])->default('no');
+            $table->foreignId('categories_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
     }

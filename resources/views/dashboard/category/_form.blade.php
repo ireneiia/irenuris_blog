@@ -1,7 +1,7 @@
 @csrf
 <label>Titulo:</label>
-<input type="text" name="titulo" id="titulo"value="{{old("titulo",$category->titulo)}}" >
+<input type="text" class="form-control" name="titulo" id="titulo"value="{{old("titulo",$category->titulo)}}" >
 
 <label>Url:</label>
-<input type="text" name="url" id="url" value="{{old("url",$category->url)}}">
-<button type="submit" class="btn btn-info">Enviar</button>
+<input type="text" class="form-control" name="url" id="url" value="{{old("url",$category->url)}}">
+<button type="submit" class ="btn btn-succes my-3" class="btn btn-info">Enviar</button>

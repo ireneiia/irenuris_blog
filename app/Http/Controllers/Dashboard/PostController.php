@@ -18,7 +18,7 @@ class PostController extends Controller
      * Display a listing of the resource.
      */
     public function index()
-    {
+    {   
         $posts = Post::paginate(2);
         return view('dashboard.post.index', compact('posts'));
     }
