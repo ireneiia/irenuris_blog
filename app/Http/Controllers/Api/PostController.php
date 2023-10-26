@@ -15,7 +15,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        return response()->json(Post::paginate(2));
+        return response()->json(Post::with('categoria')->paginate(2));
     }
 
     public function all()
@@ -49,6 +49,13 @@ class PostController extends Controller
     public function url(Post $post){
         //$post = Post::with("categoria")->where("url",$url)->firstOrFail();
         $post->categoria;
+        return response()->json($post);
+
+    }
+
+    public function id(Post $post){
+        //$post = Post::with("categoria")->where("url",$url)->firstOrFail();
+        $post->post;
         return response()->json($post);
 
     }

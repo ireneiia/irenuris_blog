@@ -59,7 +59,7 @@ class PutRequest extends FormRequest
         return [
             //titulo,url,contenido,descripcion,imagen,posted,categorias_id
             "titulo"=>"required|min:5|max:500",
-            "url"=>"required|min:5|max:500|unique:posts,url,".$this->route("post")->id,
+            "url"=>"max:500|unique:posts,url,".$this->route("post")->id,
             "contenido"=>"required|min:7",
             "descripcion"=>"required|min:7",
             "posted"=>"required",

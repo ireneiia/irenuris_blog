@@ -47,6 +47,10 @@ Route::group(['prefix'=> 'blog'], function(){
     });
  });
 
+Route::get('/vue/{n1?}/{n2?}',function(){
+    return view('vue');
+});
+
 
 
 require __DIR__.'/auth.php';
